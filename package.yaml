@@ -1,0 +1,88 @@
+name:                ged-seq
+version:             0.1.0.0
+github:              "soverysour/ged-seq"
+license:             BSD3
+author:              "soverysour"
+maintainer:          "sebi.f@tuta.io"
+copyright:           "BSD3"
+
+extra-source-files:
+- README.md
+
+synopsis:            Graph edit distance, sequential version based on A*.
+category:            ged
+
+description:         Please see the README on GitHub at <https://github.com/soverysour/ged-seq#readme>
+
+ghc-options:
+  - -Weverything
+  - -Werror
+  - -Wno-safe
+  - -Wno-unsafe
+  - -Wno-missing-import-lists
+  - -Wno-missed-specialisations
+  - -Wno-all-missed-specialisations
+  - -Wno-missing-local-signatures
+  - -Wno-monomorphism-restriction
+
+default-extensions:
+  - EmptyCase
+  - FlexibleContexts
+  - FlexibleInstances
+  - InstanceSigs
+  - MultiParamTypeClasses
+  - DeriveFoldable
+  - DeriveFunctor
+  - DeriveGeneric
+  - DeriveLift
+  - DeriveTraversable
+  - DerivingStrategies
+  - GeneralizedNewtypeDeriving
+  - StandaloneDeriving
+  - OverloadedStrings
+  - NoImplicitPrelude
+  - ScopedTypeVariables
+  - TypeApplications
+  - TypeOperators
+  - MultiWayIf
+  - NamedFieldPuns
+  - TupleSections
+  - DisambiguateRecordFields
+  - RecordWildCards
+
+dependencies:
+- base >= 4.7 && < 5
+- protolude
+- aeson
+- containers
+- bytestring 
+- text
+- pqueue
+- bimap
+
+library:
+  source-dirs: src
+
+executables:
+  ged-seq-exe:
+    main:                Main.hs
+    source-dirs:         app
+    ghc-options:
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N
+    dependencies:
+    - ged-seq
+
+tests:
+  ged-seq-test:
+    main:                Main.hs
+    source-dirs:         test
+    ghc-options:
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N
+    - -O3
+    dependencies:
+    - HUnit
+    - ged-seq

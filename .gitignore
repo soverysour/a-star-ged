@@ -1,0 +1,7 @@
+.stack-work/
+spirit.cabal
+*~
+profiling-data/
+input-graph-before.json
+input-graph-after.json
+output-ged.json
