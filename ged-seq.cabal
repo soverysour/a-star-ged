@@ -4,11 +4,11 @@ cabal-version: 1.12
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: 33e5ca958b3754c4a2f308b56b1d7b16a6d442802fc7fa297d57dbc51bf4bf44
+-- hash: a587d4afb602fd7be96a242e679d2289faa8af76beb9f956fd7113d870c9c68d
 
 name:           ged-seq
 version:        0.1.0.0
-synopsis:       Graph edit distance, sequential version based on A*.
+synopsis:       Graph edit distance, sequential and parallel version based on A*.
 description:    Please see the README on GitHub at <https://github.com/soverysour/ged-seq#readme>
 category:       ged
 homepage:       https://github.com/soverysour/ged-seq#readme
@@ -29,6 +29,7 @@ source-repository head
 library
   exposed-modules:
       Algo
+      AlgoPar
       Graph
       Input
       Output
@@ -44,6 +45,7 @@ library
     , bimap
     , bytestring
     , containers
+    , parallel
     , pqueue
     , protolude
     , text
@@ -56,7 +58,7 @@ executable ged-seq-exe
   hs-source-dirs:
       app
   default-extensions: EmptyCase FlexibleContexts FlexibleInstances InstanceSigs MultiParamTypeClasses DeriveFoldable DeriveFunctor DeriveGeneric DeriveLift DeriveTraversable DerivingStrategies GeneralizedNewtypeDeriving StandaloneDeriving OverloadedStrings NoImplicitPrelude ScopedTypeVariables TypeApplications TypeOperators MultiWayIf NamedFieldPuns TupleSections DisambiguateRecordFields RecordWildCards
-  ghc-options: -Weverything -Werror -Wno-safe -Wno-unsafe -Wno-missing-import-lists -Wno-missed-specialisations -Wno-all-missed-specialisations -Wno-missing-local-signatures -Wno-monomorphism-restriction -threaded -rtsopts -with-rtsopts=-N
+  ghc-options: -Weverything -Werror -Wno-safe -Wno-unsafe -Wno-missing-import-lists -Wno-missed-specialisations -Wno-all-missed-specialisations -Wno-missing-local-signatures -Wno-monomorphism-restriction -threaded -rtsopts -with-rtsopts=-N -O3
   build-depends:
       aeson
     , base >=4.7 && <5
@@ -64,6 +66,7 @@ executable ged-seq-exe
     , bytestring
     , containers
     , ged-seq
+    , parallel
     , pqueue
     , protolude
     , text
@@ -77,7 +80,7 @@ test-suite ged-seq-test
   hs-source-dirs:
       test
   default-extensions: EmptyCase FlexibleContexts FlexibleInstances InstanceSigs MultiParamTypeClasses DeriveFoldable DeriveFunctor DeriveGeneric DeriveLift DeriveTraversable DerivingStrategies GeneralizedNewtypeDeriving StandaloneDeriving OverloadedStrings NoImplicitPrelude ScopedTypeVariables TypeApplications TypeOperators MultiWayIf NamedFieldPuns TupleSections DisambiguateRecordFields RecordWildCards
-  ghc-options: -Weverything -Werror -Wno-safe -Wno-unsafe -Wno-missing-import-lists -Wno-missed-specialisations -Wno-all-missed-specialisations -Wno-missing-local-signatures -Wno-monomorphism-restriction -threaded -rtsopts -with-rtsopts=-N -O3
+  ghc-options: -Weverything -Werror -Wno-safe -Wno-unsafe -Wno-missing-import-lists -Wno-missed-specialisations -Wno-all-missed-specialisations -Wno-missing-local-signatures -Wno-monomorphism-restriction -threaded -rtsopts -with-rtsopts=-N
   build-depends:
       HUnit
     , aeson
@@ -86,6 +89,7 @@ test-suite ged-seq-test
     , bytestring
     , containers
     , ged-seq
+    , parallel
     , pqueue
     , protolude
     , text

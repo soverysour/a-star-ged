@@ -8,7 +8,7 @@ import           Data.Text            (pack)
 import           Protolude            hiding (readFile, writeFile)
 import           Protolude.Panic      (panic)
 
-import           Algo
+import           AlgoPar
 import           Graph
 import           Input
 import           Output
@@ -27,5 +27,5 @@ main :: IO ()
 main = do
   graphLhs <- readGraph "./input-graph-before.json"
   graphRhs <- readGraph "./input-graph-after.json"
-  let gedCost = calculateGed graphLhs graphRhs
+  let gedCost = calculateGedPar 5 graphLhs graphRhs
   writeResult "./output-ged.json" gedCost

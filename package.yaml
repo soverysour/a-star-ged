@@ -9,7 +9,7 @@ copyright:           "BSD3"
 extra-source-files:
 - README.md
 
-synopsis:            Graph edit distance, sequential version based on A*.
+synopsis:            Graph edit distance, sequential and parallel version based on A*.
 category:            ged
 
 description:         Please see the README on GitHub at <https://github.com/soverysour/ged-seq#readme>
@@ -59,6 +59,7 @@ dependencies:
 - text
 - pqueue
 - bimap
+- parallel
 
 library:
   source-dirs: src
@@ -71,6 +72,7 @@ executables:
     - -threaded
     - -rtsopts
     - -with-rtsopts=-N
+    - -O3
     dependencies:
     - ged-seq
 
@@ -82,7 +84,6 @@ tests:
     - -threaded
     - -rtsopts
     - -with-rtsopts=-N
-    - -O3
     dependencies:
     - HUnit
     - ged-seq
