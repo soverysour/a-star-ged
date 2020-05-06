@@ -5,3 +5,6 @@ profiling-data/
 input-graph-before.json
 input-graph-after.json
 output-ged.json
+processed-results.md
+selections.md
+result.txt

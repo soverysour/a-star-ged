@@ -30,23 +30,23 @@ function performTest()
     printf "\nExit status: $?"
 
     # Par.
-    result=`time timeout "$timeoutLimit" "$executable" --run-par-with-k 1 +RTS -N1`
+    result=`time timeout "$timeoutLimit" "$executable" --run-par-with-k 1`
     printf "\nExit status: $?"
 
-    result=`time timeout "$timeoutLimit" "$executable" --run-par-with-k 2 +RTS -N2`
+    result=`time timeout "$timeoutLimit" "$executable" --run-par-with-k 2`
     printf "\nExit status: $?"
 
-    result=`time timeout "$timeoutLimit" "$executable" --run-par-with-k 4 +RTS -N4`
+    result=`time timeout "$timeoutLimit" "$executable" --run-par-with-k 4`
     printf "\nExit status: $?"
 
-    result=`time timeout "$timeoutLimit" "$executable" --run-par-with-k 8 +RTS -N8`
+    result=`time timeout "$timeoutLimit" "$executable" --run-par-with-k 8`
     printf "\nExit status: $?"
 
     printf "\n\n=== END RUN $i === \n\n"
   done
 }
 
-for nodeCount in `seq 5 15`; do
+for nodeCount in `seq 5 12`; do
   for labelCount in 50 100 300 500; do
     for edgePercent in 0.2 0.5 0.8 1.0; do
       for labelPercent in 0.2 0.5 0.8 1.0; do
